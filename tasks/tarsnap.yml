@@ -3,7 +3,7 @@
 #   contributors:  al3x jplock lvillani lukecyca jsravn bcachet alexdunae pdebruic
 # The sovereign project source and this derivative work are licensed under the GNU General Public License v3.
 
-- name: Install dependencies for Tarsnap
+- name: Apt-install dependencies for Tarsnap
   apt: pkg={{ item }} state=installed
   with_items:
     - e2fslibs-dev
@@ -11,6 +11,18 @@
     - zlib1g-dev
     - build-essential
     - python-setuptools
+  when: ansible_pkg_mgr | lower == "apt"
+
+- name: Yum-install dependencies for Tarsnap
+  yum: name={{ item }} state=installed
+  with_items:
+    - gcc
+    - make
+    - glibc-devel
+    - openssl-devel
+    - zlib-devel
+    - e2fsprogs-devel
+  when: ansible_pkg_mgr | lower == "yum"
 
 - name: Check if tarsnap {{ tarsnap_version }} is installed
   shell: tarsnap --version | grep {{ tarsnap_version }} --color=never
