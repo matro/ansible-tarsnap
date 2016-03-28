@@ -1,0 +1,7 @@
+# Install the "redsnapper" script, for faster restoring from backups
+---
+
+- name: Install "redsnapper" script
+  gem:
+    name=redsnapper
+    state=present
