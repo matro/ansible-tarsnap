@@ -56,6 +56,8 @@
   args:
     executable: /bin/bash
     chdir: /root
+  tags:
+    - skip_ansible_lint
   register: tarsnap_sha
 
 - name: Download Tarsnap source
