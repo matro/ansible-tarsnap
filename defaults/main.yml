@@ -8,3 +8,9 @@ tarsnap_cron_month: "*"
 tarsnap_tarsnapper_conf: "tarsnapper.default.conf"
 #tarsnap_global_exclusions:
 #  - "*.deb"
+
+# By default, both install and configure Tarsnap. But allow for
+# running only the "installation" tasks, if configuration is
+# going to be handled in another way outside of this role.
+tarsnap_install_only: false
+
