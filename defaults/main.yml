@@ -14,3 +14,8 @@ tarsnap_tarsnapper_conf: "tarsnapper.default.conf"
 # going to be handled in another way outside of this role.
 tarsnap_install_only: false
 
+# Path at which 'tarsnap' binary is installed. Include the trailing
+# slash. This path is used when determining if Tarsnap is installed
+# so as to avoid failing the check if this path isn't in the
+# ansible_user's $PATH.
+tarsnap_install_path: "/usr/local/bin/"

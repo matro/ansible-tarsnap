@@ -25,7 +25,7 @@
   when: ansible_pkg_mgr | lower == "yum"
 
 - name: Check if tarsnap {{ tarsnap_version }} is installed
-  shell: tarsnap --version | grep {{ tarsnap_version }} --color=never
+  shell: "{{ tarsnap_install_path }}tarsnap --version | grep {{ tarsnap_version }} --color=never"
   register: tarnsap_installed
   changed_when: "tarnsap_installed.stderr != ''"
   ignore_errors: yes
